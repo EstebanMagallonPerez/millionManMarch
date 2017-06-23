@@ -12,18 +12,22 @@ var server 				= http.createServer(app);
 var io 					= require('socket.io').listen(server);
 
 
-app.use(express.static(__dirname + '/html'));
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
-	res.sendfile('./index.html');
+	res.sendfile('./public/index.html');
 });
-
+var men = 0;
 io.on('connection', function(socket){
 
 
-	socket.on('newCount', function(data){
+	socket.emit('number', men); // One more man is in our army
 
-	});
+	socket.on('sendBackToServer', function(number){
+		console.log(number);
+		men = number;
+		socket.emit('updatedMen',men);
+	}); // listen to the event
 	console.log("connected");
 
 });
