@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Messages</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
+	</head>
+	<body>
+		<h1>Thanks for helping us count to a million</h1>
+
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js"></script>
+	<script>
+		var socket = io.connect();
+		var w;
+		startWorker();
+		function startWorker() {
+			if(typeof(Worker) !== "undefined") {
+				if(typeof(w) == "undefined") {
+					w = new Worker("demo_workers.js");
+				}
+				w.onmessage = function(event) {
+					document.getElementById("result").innerHTML = event.data;
+				};
+			} else {
+				document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
+			}
+		}
+		numToSend = parseInt(chat_identifier);
+		console.log(chat_identifier);
+		console.log(numToSend);
+		socket.emit('requestMessages',chat_identifier);
+
+
+	</script>
+</html>
