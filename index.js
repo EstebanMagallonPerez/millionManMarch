@@ -4,7 +4,6 @@ IOS DEPENDANCIES/SETUP
 	- install SQLite 3.x from Cydia/Telesphoreo repo
 	- install CLSMS from https:// s1ris.github.io/repo
 */
-var fs 					= require('fs');
 var express 			= require('express');
 var http 				= require('http');
 var app 				= express();
@@ -18,15 +17,32 @@ app.get('/', function(req, res){
 	res.sendfile('./public/index.html');
 });
 var men = 0;
+var sendInfo;
+function getDataToSend()
+{
+	//Sample value to emit
+	//The data must be in an array, not an object so we are able to parse the value later
+	var data = [men];
+	//The userFunction is converted to a string before we send it to the user
+	var userFunction = function(){var men = parseInt(parsed.data[0]);postMessage(++men);}
+	passFunc = ''+userFunction;
+	sendInfo = {"data":data,"userFunc":passFunc};
+	console.log(JSON.stringify(sendInfo));
+}
+
 io.on('connection', function(socket){
-
-
-	socket.emit('number', men); // One more man is in our army
+	getDataToSend();
+	socket.emit('number', sendInfo); // We send some information to our user, for now it is a value. We also need a function
 
 	socket.on('sendBackToServer', function(number){
-		console.log(number);
-		men = number;
-		socket.emit('updatedMen',men);
+		//Here you put your check to determine if the client is sending something useful
+		if(number > men)
+		{
+			men = number;
+			getDataToSend();
+			io.sockets.emit('updatedMen',men);
+		}
+		socket.emit('number', sendInfo);
 	}); // listen to the event
 	console.log("connected");
 
