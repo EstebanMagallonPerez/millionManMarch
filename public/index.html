@@ -16,31 +16,26 @@
 		var socket = io.connect();
 		var w;
 		socket.on('number',function(data){
-			startWorker(data);
-		});
-		socket.on('updatedMen',function(data){
-			document.getElementById("result").innerHTML = data;
-			console.log(data);
-		});
-		function startWorker(men) {
 			if(typeof(Worker) !== "undefined") {
 				if(typeof(w) == "undefined") {
 					w = new Worker("oneMan.js");
-					w.postMessage("men");
+					w.postMessage([data]);
 				}
 				w.onmessage = function(event) {
-
-					socket.emit('sendBackToServer',function(event){
-						console.log(event.data);
-						event.data;
-					})
-
+					console.log(event)
+					socket.emit('sendBackToServer',event.data)
+					w.terminate();
+					w = undefined;
 				};
 
 			} else {
 				document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
 			}
-		}
+		});
+		socket.on('updatedMen',function(data){
+			document.getElementById("result").innerHTML = data;
+			console.log(data);
+		});
 
 
 	</script>
