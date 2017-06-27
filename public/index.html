@@ -10,19 +10,91 @@
 		<h1>Thanks for helping us count to a million</h1>
 
 	</body>
+	<style>
+		.pixel{
+			width: 5px;
+			height: 5px;
+			float: left;
+		}
+		.row
+		{
+			height: 5px;
+			width: 100%;
+		}
+		.flip
+		{
+			transform:rotate(90deg) scale(1,-1);
+		}
+	</style>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js"></script>
 	<p id="result"></p>
+	<div class="flip">
+		<div class="row" id="row0"></div>
+		<div class="row" id="row1"></div>
+		<div class="row" id="row2"></div>
+		<div class="row" id="row3"></div>
+		<div class="row" id="row4"></div>
+		<div class="row" id="row5"></div>
+		<div class="row" id="row6"></div>
+		<div class="row" id="row7"></div>
+		<div class="row" id="row8"></div>
+		<div class="row" id="row9"></div>
+		<div class="row" id="row10"></div>
+		<div class="row" id="row11"></div>
+		<div class="row" id="row12"></div>
+		<div class="row" id="row13"></div>
+		<div class="row" id="row14"></div>
+		<div class="row" id="row15"></div>
+		<div class="row" id="row16"></div>
+		<div class="row" id="row17"></div>
+		<div class="row" id="row18"></div>
+		<div class="row" id="row19"></div>
+		<div class="row" id="row20"></div>
+		<div class="row" id="row21"></div>
+		<div class="row" id="row22"></div>
+		<div class="row" id="row23"></div>
+		<div class="row" id="row24"></div>
+		<div class="row" id="row25"></div>
+		<div class="row" id="row26"></div>
+		<div class="row" id="row27"></div>
+	</div>
 	<script>
 		var socket = io.connect();
 		var w;
+		var global;
 		socket.on('number',function(data){
+			//console.log("recieved");
+			//console.log(data);
+			//var data = JSON.parse(data.data);
+			global = data;
+			for(var i = 0; i < 28; i++)
+			{
+				document.getElementById("row"+i).innerHTML = "";
+			}
+			//First the unclassified image
+			for(var i =0; i < data[0][0][1].length; i++)
+			{
+				var row = Math.floor(i%28);
+				var color = data[0][0][1][i];
+				var color = "rgba("+color+","+color+","+color+",1)";
+				document.getElementById("row"+row).innerHTML += "<div class='pixel' style='background-color: "+color+"'></div>";
+			}
+			//next the classified image
+			for(var i =0; i < data[0][1][1].length; i++)
+			{
+				var row = Math.floor(i%28);
+				var color = data[0][1][1][i];
+				var color = "rgba("+color+","+color+","+color+",1)";
+				document.getElementById("row"+row).innerHTML += "<div class='pixel' style='background-color: "+color+"'></div>";
+			}
+
 			if(typeof(Worker) !== "undefined") {
 				if(typeof(w) == "undefined") {
 					w = new Worker("oneMan.js");
-					w.postMessage([data]);
+					w.postMessage(data);
 				}
 				w.onmessage = function(event) {
-					console.log(event)
+					//console.log(event)
 					socket.emit('sendBackToServer',event.data)
 					w.terminate();
 					w = undefined;
