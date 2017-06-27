@@ -63,11 +63,8 @@
 		var w;
 		var global;
 		socket.on('number',function(data){
-			//console.log("recieved");
-			//console.log(data);
-			//var data = JSON.parse(data.data);
-			global = data;
-			for(var i = 0; i < 28; i++)
+			//This will show the comparison, but also drastically slow down the program
+			/*for(var i = 0; i < 28; i++)
 			{
 				document.getElementById("row"+i).innerHTML = "";
 			}
@@ -86,7 +83,7 @@
 				var color = data[0][1][1][i];
 				var color = "rgba("+color+","+color+","+color+",1)";
 				document.getElementById("row"+row).innerHTML += "<div class='pixel' style='background-color: "+color+"'></div>";
-			}
+			}*/
 
 			if(typeof(Worker) !== "undefined") {
 				if(typeof(w) == "undefined") {
@@ -103,10 +100,6 @@
 			} else {
 				document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
 			}
-		});
-		socket.on('updatedMen',function(data){
-			document.getElementById("result").innerHTML = data;
-			console.log(data);
 		});
 
 
