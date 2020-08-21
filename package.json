@@ -12,10 +12,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://estebanmagallonperez:Teban1995@github.com/mbrooks8/millionManMarch.git"
-  },
   "author": "",
   "license": "ISC",
   "bugs": {
