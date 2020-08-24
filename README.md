@@ -1,2 +1,2 @@
 # millionManMarch
-Node JS webworker to count to a million.
+A proof of concept idea on how to integrate a distrubuted network into a web browser.
