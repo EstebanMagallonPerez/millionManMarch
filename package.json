@@ -4,9 +4,9 @@
   "description": "counting to a million using web workers",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.15.3",
-    "http": "^0.0.0",
-    "socket.io": "^2.0.3"
+    "express": "^4.17.1",
+    "http": "0.0.0",
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {},
   "scripts": {

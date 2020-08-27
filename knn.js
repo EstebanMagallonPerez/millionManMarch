@@ -16,6 +16,7 @@ var labelFileBuffer = fs.readFileSync(__dirname + '/mnist/labels.idx1-ubyte');
 var classifiedImage = 10;	//10 - 10,000
 var unclassifiedImage = 0;	//0-10
 var numNeighbors = 5;
+var numsToTest = []
 
 var start = new Date().getTime();
 
@@ -30,6 +31,7 @@ function getImage(image)
 			pixels.push(dataFileBuffer[(image * 28 * 28) + (x + (y * 28)) + 16]);
 		}
 	}
+	//console.log(pixels)
 	var imageData = [labelFileBuffer[image + 8],pixels,image];
 	return imageData;
 }
@@ -51,15 +53,12 @@ function getDifference(){
 //Here we define our storage method
 //There are 10 testing values, and the number of neighbors will change based on the preset value
 var classifications = [];
-for(let i = 0; i < 10; i++)
-{
-	var neighbors = [];
+var neighbors = [];
 	for(var j = 0; j < numNeighbors;j++)
 	{
 		neighbors.push({"classification":-1,"distance":200000});
 	}
-	classifications.push({"image":i,"classification":-1,"nearest":neighbors})
-}
+classifications.push({"classification":-1,"nearest":neighbors})
 
 //Preparing the data to be sent to the client
 //NOTE that for some reason objects cannot be sent. all the data was lost when I tried that.
@@ -67,53 +66,79 @@ for(let i = 0; i < 10; i++)
 //
 function getDataToSend()
 {
-	var unclassifeid = getImage(unclassifiedImage);
+	if (numsToTest.length == 0){return -2;}
+	var unclassifeid = [-1,numsToTest[0],-1]
+	//getImage(unclassifiedImage);
 	var classified = getImage(classifiedImage);
 	data = [unclassifeid,classified];
 	passFunc = ''+getDifference;
 	var toSend = [data,passFunc];
-	if(classifiedImage == 110)
+	if(classifiedImage == 5000)
 	{
-		classifiedImage = 10;
+		classifiedImage = 0;
 		console.log("test image is: "+unclassifiedImage+" true class is: "+ labelFileBuffer[unclassifiedImage + 8])
 		console.log(classifications[unclassifiedImage].nearest);
-		unclassifiedImage ++;
-		if(unclassifiedImage == 10)
+		var temp = [];
+		for(var j = 0; j < numNeighbors;j++)
 		{
-			sendInfo = -1;
-			var end = new Date().getTime();
-			var time = end - start;
-			console.log('Execution time: ' + time);
-			return -1;
+			temp.push({"classification":-1,"distance":200000});
 		}
+		classifications[unclassifiedImage].nearest = temp
+		numsToTest.shift();
+		var end = new Date().getTime();
+		var resolution = end - start;
+		var resolutionTime = (resolution / 1000)
+		console.log("total exec took: ",resolutionTime)
 	}
 	classifiedImage++;
 	return toSend;
 }
 
 io.on('connection', function(socket){
+	console.log("connected start");
 	var toSend =  getDataToSend();
 	if(toSend == -1){
 		return;
 	}
-	socket.emit('number', toSend);
+	if(numsToTest.length > 0){
+		socket.emit('number', getDataToSend());	
+	} 
+	
+	socket.on('addNumber', function(output)
+	{
+		numsToTest.push(output);
+		var toSend =  getDataToSend();
+		socket.emit('number', toSend);	
+		socket.broadcast.emit('number', toSend);
+	});
 
 	socket.on('sendBackToServer', function(output){
-		for(var i = 0; i < classifications[output[1]].nearest.length;i++)
+		if (classifications[0] != undefined)
 		{
-			var max = classifications[output[1]].nearest[0].distance;
+			var maxDist = classifications[0].nearest[0].distance;
 			var maxIndex = 0;
-			for (var i = 1; i < classifications[output[1]].nearest.length; i++) {
-				if (classifications[output[1]].nearest[i].distance > max) {
-					maxIndex = i;
-					max = classifications[output[1]].nearest[i].distance;
+			for (var i = 1; i < classifications[0].nearest.length; i++) {
+				if (classifications[0].nearest[i].distance > maxDist)
+				{
+					var maxDist = classifications[0].nearest[i].distance;
+					var maxIndex = i;
 				}
 			}
-			if(output[0] < classifications[output[1]].nearest[maxIndex].distance)
+			if(output[0] < classifications[0].nearest[maxIndex].distance)
 			{
-				classifications[output[1]].nearest[maxIndex].distance = output[0];
-				classifications[output[1]].nearest[maxIndex].classification = output[3]
+				if(numsToTest.length > 0){
+					classifications[0].nearest[maxIndex].distance = output[0];
+					classifications[0].nearest[maxIndex].classification = output[3]
+					for(var i = 0; i <classifications[0].nearest.length ;i++)
+					{
+						getImage(classifications[0].nearest.index);
+					}
+					socket.emit('setNearest', classifications[0].nearest);
+					socket.broadcast.emit('setNearest', classifications[0].nearest);
+				}
 			}
+		}else{
+			console.log("cant record classifications")
 		}
 		toSend = getDataToSend();
 		if(toSend == -1){
@@ -125,8 +150,8 @@ io.on('connection', function(socket){
 
 });
 
-server.listen(80, function(){
-	console.log('nodeJS Messages is now online');
+server.listen(7777, function(){
+	console.log('Knn distributed network is running');
 });
 
 
