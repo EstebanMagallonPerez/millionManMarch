@@ -74,14 +74,19 @@
 			if(typeof(Worker) !== "undefined") {
 				if(typeof(w) == "undefined") {
 					w = new Worker("oneMan.js");
-					w.postMessage(data);
-				}
-				w.onmessage = function(event) {
-					//console.log(event)
-					socket.emit('sendBackToServer',event.data)
-					w.terminate();
-					w = undefined;
-				};
+                    w.onmessage = function(event) {
+                        //console.log(event)
+                        socket.emit('sendBackToServer',event.data)
+                        //w.terminate();
+                        //w = undefined;
+                    };
+                    w.postMessage(data);  
+                }else
+                {
+                    w.postMessage(data);
+                }
+                
+				
 
 			} else {
 				document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
