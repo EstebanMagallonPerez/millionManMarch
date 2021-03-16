@@ -1,0 +1,20 @@
+.card
+{
+	border-radius: $border-radius;
+	box-shadow: $box-shadow;
+	background-color: $background-color;
+	margin: 20px;
+	@include color-options();
+	.header{
+		@include color-options();
+		padding: .75rem 1.25rem;
+		border-bottom: $border-style;
+	}
+	.body{
+		padding: 1em 1.25rem;
+	}
+	.footer{
+		padding: 1em 1.25rem;
+		border-top: 1px solid rgba(0,0,0,.125);;
+	}
+}

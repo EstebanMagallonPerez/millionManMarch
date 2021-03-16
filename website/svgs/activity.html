@@ -1,0 +1,223 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<style>
+	#svg circle {
+		color: white;
+
+		transition: stroke-dashoffset 1s linear;
+		stroke: #666;
+		stroke-width: 1em;
+		stroke-linecap:round;
+		transform: rotate(90deg) translate(-0px, -200px) scale(-1,-1) translate(-200px,-180px);
+
+	}
+	#svg #redBack{
+		stroke-dashoffset: 183;
+	}
+	#svg #greenBack{
+		stroke-dashoffset: 275;
+	}
+	#svg #blueBack{
+		stroke-dashoffset: 370;
+	}
+
+	#svg #barRed{
+		stroke-dashoffset: 183;
+		stroke: url(#red);
+	}
+	#svg #barGreen{
+		stroke-dashoffset: 275;
+		stroke: url(#green);
+	}
+	#svg #barBlue{
+		stroke: url(#blue);
+		stroke-dashoffset: 370;
+	}
+
+	#svg #bar {
+
+	}
+	html
+	{
+		font-family: 'Roboto', sans-serif;
+		font-weight: bold;
+		fill: white;
+	}
+	      .center
+      {
+            margin: auto;
+            width: 100%;
+      }
+</style>
+<div class="center" id="cont" data-pct="100">
+		<svg id="svg" viewBox="0 0 220 220" width="100%" height="100%"
+		 preserveAspectRatio="xMidYMin meet">
+<!--	<svg id="svg" width="220" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">-->
+
+		<defs>
+			<linearGradient id="red" x1="0%" y1="0%" x2="100%" y2="0%">
+				<stop offset="0%"   stop-color="#F63284"/>
+				<stop offset="100%" stop-color="#E8113B"/>
+			</linearGradient>
+			<linearGradient id="green" x1="0%" y1="0%" x2="100%" y2="0%">
+				<stop offset="0%"   stop-color="#93F00D"/>
+				<stop offset="100%" stop-color="#B2FF01"/>
+			</linearGradient>
+			<linearGradient id="blue" x1="0%" y1="0%" x2="100%" y2="0%">
+				<stop offset="0%"   stop-color="#09C4D6"/>
+				<stop offset="100%" stop-color="#05F8C9"/>
+			</linearGradient>
+		</defs>
+
+		<circle id="redBack" r="90" cx="100" cy="100" fill="transparent" stroke-dashoffset="0" stroke-dasharray="565.48" style="" />
+
+		<circle id="greenBack" r="70" cx="100" cy="100" fill="transparent" stroke-dashoffset="0" stroke-dasharray="565.48" style="" />
+
+		<circle id="blueBack" r="50" cx="100" cy="100" fill="transparent" stroke-dashoffset="0" stroke-dasharray="565.48" style="" />
+
+
+
+		<circle id="barBlue" r="50" cx="100" cy="100" fill="transparent" stroke-dashoffset="0" stroke-linecap="round" stroke-dasharray="565.48" fill="stroke:url(#radial)" />
+
+		<circle id="barGreen" r="70" cx="100" cy="100" fill="transparent" stroke-dashoffset="0" stroke-linecap="round" stroke-dasharray="565.48" fill="stroke:url(#radial)" />
+
+		<circle id="barRed" r="90" cx="100" cy="100" fill="transparent" stroke-dashoffset="0" stroke-linecap="round" stroke-dasharray="565.48" fill="stroke:url(#radial)" />
+
+		<rect x="0" y="70" rx="20" ry="20" width="130" height="50" style="fill:url(#red);" />
+		<text id="time" x="10" y="96" dy=".3em" font-size="40px" >&nbsp;- -:- -</text>
+
+		<text text-anchor="end" id="redText" x="105" y="10" dy=".3em" font-size="10px" >-</text>
+		<text text-anchor="end" id="greenText" x="105" y="30" dy=".3em" font-size="10px" >-</text>
+		<text text-anchor="end" id="blueText" x="105" y="50" dy=".3em" font-size="10px" >-</text>
+	</svg>
+
+</div>
+<script>
+
+	var refreshRings = setInterval(refresh, 1000);
+	var outerRing = {ringId:"barRed",textId:"redText",ringStart:183,ringEnd:383};
+	var middleRing = {ringId:"barGreen",textId:"greenText",ringStart:275,ringEnd:291};
+	var innerRing = {ringId:"barBlue",textId:"blueText",ringStart:370,ringEnd:196};
+	var test = "nothingYet";
+	function refresh()
+	{
+		setClock();
+		switcher("hour",outerRing);
+		switcher("minute",middleRing);
+		switcher("second",innerRing);
+	}
+	function mediaCheck()
+	{
+	}
+	function switcher(ringVal,ringId)
+	{
+		if(ringVal == "battery")
+		{
+			battery(ringId);
+		}else if(ringVal == "hour")
+		{
+			hour(ringId);
+		}else if(ringVal == "minute")
+		{
+			minute(ringId);
+		}else if(ringVal =="second")
+		{
+			second(ringId);
+		}else if(ringVal =="weather")
+		{
+			weather(ringId);
+		}else if(ringVal =="wifi")
+		{
+			wifi(ringId);
+		}else if(ringVal =="ram")
+		{
+			ram(ringId);
+		}
+	}
+	function battery(tempRing)
+	{
+		var val = getBattery();
+		var text = document.getElementById(tempRing.textId);
+		text.textContent = (val+"%");
+		var circle = document.getElementById(tempRing.ringId);
+		val = 100-val;
+		if (val < 0) { val = 0;}
+		if (val > 100) { val = 100;}
+		val = val/100;
+		val = tempRing.ringStart+(tempRing.ringEnd*val);
+		var pct = val;
+		circle.style.strokeDashoffset= pct;
+	}
+	function setClock()
+	{
+		var d = new Date();
+		var h = d.getHours();
+		var m = d.getMinutes();
+		if(h>12){h=h-12;}
+		if(h==0){h=12;}
+		if(m<10){m="0"+m;}
+		if(h<10){h='\xa0'+h;}
+		var time = document.getElementById('time').textContent = (h+":"+m);
+	}
+	function hour(tempRing)
+	{
+		var text = document.getElementById(tempRing.textId);
+		text.textContent = ("H");
+		var d = new Date();
+		var h = d.getHours();
+		if(h>12){h=h-12;}
+		if(h==0){h=12;}
+		var circle = document.getElementById(tempRing.ringId);
+		var pct = tempRing.ringStart+(tempRing.ringEnd*(12-h)/12);
+		circle.style.strokeDashoffset= pct;
+	}
+	function minute(tempRing)
+	{
+		var text = document.getElementById(tempRing.textId);
+		text.textContent = ("M");
+		var d = new Date();
+		var m = d.getMinutes();
+		var circle = document.getElementById(tempRing.ringId);
+		var pct = tempRing.ringStart+(tempRing.ringEnd*(60-m)/60);
+		circle.style.strokeDashoffset= pct;
+	}
+	function second(tempRing)
+	{
+		var text = document.getElementById(tempRing.textId);
+		text.textContent = ("S");
+		var d = new Date();
+		var s = d.getSeconds();
+		var circle = document.getElementById(tempRing.ringId);
+		var pct = tempRing.ringStart+(tempRing.ringEnd*(60-s)/60);
+		circle.style.strokeDashoffset= pct;
+	}
+	function weather(tempRing)
+	{
+		var temp = getTemp();
+		var text = document.getElementById(tempRing.textId);
+		text.textContent = (temp+'\xB0');
+		var circle = document.getElementById(tempRing.ringId);
+		total = max-min;
+		var pct = tempRing.ringStart+(tempRing.ringEnd*(total-temp)/total);
+		circle.style.strokeDashoffset= pct;
+	}
+	function wifi(tempRing)
+	{
+		var wifi = getWifi();
+		var text = document.getElementById(tempRing.textId);
+		text.textContent = ('W');
+		var circle = document.getElementById(tempRing.ringId);
+		total = 3;
+		var pct = tempRing.ringStart+(tempRing.ringEnd*(total-wifi)/total);
+		circle.style.strokeDashoffset= pct;
+	}
+	function ram(tempRing)
+	{
+		var currentRam = getCurrentRam();
+		var total = getTotal();
+		var text = document.getElementById(tempRing.textId);
+		text.textContent = (total-currentRam +' MB');
+		var circle = document.getElementById(tempRing.ringId);
+		var pct = tempRing.ringStart+(tempRing.ringEnd*(total-currentRam)/total);
+		circle.style.strokeDashoffset= pct;
+	}
+</script>

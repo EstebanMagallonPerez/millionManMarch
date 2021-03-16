@@ -1,0 +1,397 @@
+<style>
+      /*
+      IDs
+      sun
+      moon
+      tick0,tick5,tick10,tick15...tick55
+      temp
+      degrees
+      time
+      fillOverlay
+      dot
+      */
+      .tickrotate{
+		  transform-box: fill-box;
+            animation: animationFrames ease-in-out 1.5s;
+            animation-iteration-count: 1;
+            transform-origin: 50% 50%;
+            -webkit-animation: animationFrames ease-in-out 1.5s;
+            -webkit-animation-iteration-count: 1;
+            -webkit-transform-origin: 50% 50%;
+            -moz-animation: animationFrames ease-in-out 1.5s;
+            -moz-animation-iteration-count: 1;
+            -moz-transform-origin: 50% 50%;
+            -o-animation: animationFrames ease-in-out 1.5s;
+            -o-animation-iteration-count: 1;
+            -o-transform-origin: 50% 50%;
+            -ms-animation: animationFrames ease-in-out 1.5s;
+            -ms-animation-iteration-count: 1;
+            -ms-transform-origin: 50% 50%;
+      }
+      @keyframes animationFrames{
+            0% {transform:  rotate(0deg);}
+            40% {transform:  rotate(180deg);}
+            60% {transform:  rotate(180deg);}
+            101% {transform:  rotate(0deg);}
+      }
+      @-moz-keyframes animationFrames{
+            0% {-moz-transform:  rotate(0deg);}
+            40% {-moz-transform:  rotate(180deg);}
+            60% {-moz-transform:  rotate(180deg);}
+            101% {-moz-transform:  rotate(0deg);}
+      }
+      @-webkit-keyframes animationFrames {
+            0% {-webkit-transform:  rotate(0deg);}
+            40% {-webkit-transform:  rotate(180deg);}
+            60% {-webkit-transform:  rotate(180deg);}
+            101% {-webkit-transform:  rotate(0deg);}
+      }
+      @-o-keyframes animationFrames {
+            0% {-o-transform:  rotate(0deg);}
+            40% {-o-transform:  rotate(180deg);}
+            60% {-o-transform:  rotate(180deg);}
+            101% {-o-transform:  rotate(0deg);}
+      }
+      @-ms-keyframes animationFrames {
+            0% {-ms-transform:  rotate(0deg);}
+            40% {-ms-transform:  rotate(180deg);}
+            60% {-ms-transform:  rotate(180deg);}
+            101% {-ms-transform:  rotate(0deg);}
+      }
+      #fillOverlay
+      {
+            opacity:1;
+            fill:none;
+            fill-opacity:1;
+            stroke:#ffffff;
+            stroke-width:4;
+            stroke-linecap:round;
+            stroke-linejoin:round;
+            stroke-miterlimit:4;
+            stroke-opacity:1;
+            stroke-dasharray: 1815 1815;
+            /* animation: dash 20s linear forwards;*/
+            transition:All .95s ease;
+            -webkit-transition:All .95s ease;
+            -moz-transition:All .95s ease;
+            -o-transition:All .95s ease;
+            stroke-dashoffset:-1814;
+      }
+      #dot
+      {
+		  transform-box: fill-box;
+            transform: rotate(0deg);
+            opacity:1;
+            fill:none;
+            fill-opacity:1;
+            stroke:#ffffff;
+            stroke-width:5;
+            stroke-linecap:round;
+            stroke-linejoin:round;
+            stroke-miterlimit:4;
+            stroke-opacity:0;
+            stroke-dashoffset:0;
+            marker-start:url(#marker6602);
+            transform-origin: 50% 50%;
+            transition:All .95s ease;
+            -webkit-transition:All .95s ease;
+            -moz-transition:All .95s ease;
+            -o-transition:All .95s ease;
+      }
+      .noAnimation
+      {
+            transition:All 0s ease !important;
+            -webkit-transition:All 0s ease !important;
+            -moz-transition:All 0s ease !important;
+            -o-transition:All 0s ease !important;
+      }
+      div
+      {
+            width: 100%;
+      }
+      .center
+      {
+            margin: auto;
+            width: 75%;
+      }
+      /*html{background: black;}*/
+</style>
+<div class="center">
+      <svg viewBox="0 0 700 700" width="100%" height="100%"
+           preserveAspectRatio="xMidYMin meet">
+            <defs
+                  id="defs4138">
+                  <marker
+                          orient="auto"
+                          refY="0.0"
+                          refX="0.0"
+                          id="marker6602"
+                          style="overflow:visible;stroke:white;"
+                          stroke="white">
+                        <path
+                              id="path6604"
+                              d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+                              style="fill-rule:evenodd;stroke:white;stroke-width:1pt;stroke-opacity:1;fill:white;fill-opacity:1"
+                              transform="scale(0.4) translate(7.4, 1)" />
+                  </marker>
+                  <style type="text/css">
+                        @import url('https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic');
+                  </style>
+            </defs>
+            <metadata
+                      id="metadata4141">
+                  <rdf:RDF>
+                        <cc:Work
+                                 rdf:about="">
+                              <dc:format>image/svg+xml</dc:format>
+                              <dc:type
+                                       rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+                              <dc:title></dc:title>
+                        </cc:Work>
+                  </rdf:RDF>
+            </metadata>
+            <circle
+                    style="opacity:1;fill:#000000;fill-opacity:0.5;stroke:#ffffff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                    id="path4684"
+                    cx="354.33072"
+                    cy="354.33072"
+                    r="315.51788" />
+            <text
+                  id="text5008"
+                  y="367.95834"
+                  x="190.06119"
+                  style="font-weight:100;font-size:130px;font-family:Roboto;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none"
+                  xml:space="preserve"><tspan
+                                              y="367.95834"
+                                              x="190.06119"
+                                              id="time">01:34</tspan></text>
+            <path
+                  id="path6200"
+                  d="m 113.38584,399.84618 481.88976,0"
+                  style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            <text
+                  xml:space="preserve"
+                  style="font-weight:100;font-size:70px;line-height:125%;font-family:Roboto;letter-spacing:0px;word-spacing:0px;fill:skyblue;fill-opacity:1;stroke:none"
+                  x="203.3548"
+                  y="496.57391"
+                  id="text6424"><tspan
+                                       id="temp"
+                                       x="203.3548"
+                                       y="496.57391">68</tspan></text>
+            <text
+                  xml:space="preserve"
+                  style="font-style:normal;font-weight:100;font-size:26.49294472px;line-height:125%;font-family:Roboto;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1"
+                  x="265.34415"
+                  y="476.85944"
+                  id="text6430"><tspan
+                                       id="degrees"
+                                       x="278.34415"
+                                       y="467.85944">&deg;</tspan></text>
+            <path
+                  style="opacity:1;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.21464586;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                  d="m 450.66124,451.26427 a 26.169449,26.212775 0 0 0 -21.57109,25.79779 26.169449,26.212775 0 0 0 26.16964,26.21297 26.169449,26.212775 0 0 0 22.50943,-12.90159 28.144503,28.191099 0 0 1 -1.17867,0.0419 28.144503,28.191099 0 0 1 -28.14489,-28.19149 28.144503,28.191099 0 0 1 2.21558,-10.9596 z"
+                  id="moon" />
+
+            <path
+                  style="opacity:0.5;fill:none;fill-opacity:1;stroke:#FFFFFF;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:13.518, 13.518;stroke-dashoffset:0;stroke-opacity:1"
+                  d="M 352.08594,64.90077 C 237.07442,64.60438 124.67695,140.96918 84.619141,249.43398 49.991333,337.93474 61.825762,443.63899 117.68359,520.81874 c 52.43918,74.86051 142.01246,123.00005 233.5918,122.89649 87.51109,1.1642 175.48607,-39.8734 229.5719,-109.36997 53.10219,-66.41401 74.93407,-156.58722 56.62927,-239.66519 C 621.0721,216.00043 570.18588,144.1099 499.74721,104.33025 455.10175,78.40208 403.61628,64.2687 352.08594,64.90077 Z"
+                  id="circle6554" />
+            <path
+                  id="tick0"
+                  d="m 354.33071,10.7499 0,17.4761"
+                  style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:7.22462749;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            <path
+                  style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:7.22462749;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                  d="m 354.33071,680.43491 0,17.4761"
+                  id="tick30" />
+            <path
+                  id="tick15"
+                  d="m 697.91152,354.3307 -17.4761,0"
+                  style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:7.22462749;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            <path
+                  style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:7.22462749;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                  d="m 28.226476,354.3307 -17.4761,0"
+                  id="tick45" />
+            <path
+                  style="opacity:1;fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:7.22462749;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                  d="m 636.79922,191.24367 15.13474,-8.73805"
+                  id="tick10" />
+            <path
+                  id="tick5"
+                  d="m 517.41775,71.22373 8.73804,-15.13474"
+                  style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:7.22462749;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            <path
+                  id="tick50"
+                  d="m 71.941264,191.24367 -15.13474,-8.73805"
+                  style="opacity:1;fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:7.22462749;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            <path
+                  style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:7.22462749;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                  d="M 191.32273,71.22373 182.58469,56.08899"
+                  id="tick55" />
+            <path
+                  id="tick20"
+                  d="m 636.79922,516.70021 15.13474,8.73805"
+                  style="opacity:1;fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:7.22462749;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            <path
+                  style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:7.22462749;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                  d="m 517.41775,636.72015 8.73804,15.13474"
+                  id="tick25" />
+            <path
+                  style="opacity:1;fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:7.22462749;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                  d="m 71.941264,516.70026 -15.13474,8.73805"
+                  id="tick40" />
+            <path
+                  id="tick35"
+                  d="m 191.32273,636.7202 -8.73804,15.13474"
+                  style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:7.22462749;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            <path
+                  id="path7548"
+                  d="M 352.08594,64.90077 C 237.07442,64.60438 124.67695,140.96918 84.619141,249.43398 49.991333,337.93474 61.825762,443.63899 117.68359,520.81874 c 52.43918,74.86051 142.01246,123.00005 233.5918,122.89649 87.51109,1.1642 175.48607,-39.8734 229.5719,-109.36997 53.10219,-66.41401 74.93407,-156.58722 56.62927,-239.66519 C 621.0721,216.00043 570.18588,144.1099 499.74721,104.33025 455.10175,78.40208 403.61628,64.2687 352.08594,64.90077 Z"
+                  style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:6.75899982;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.39086292" />
+            <path
+                  id="fillOverlay"
+                  d="M 352.08594,64.90077 C 237.07442,64.60438 124.67695,140.96918 84.619141,249.43398 49.991333,337.93474 61.825762,443.63899 117.68359,520.81874 c 52.43918,74.86051 142.01246,123.00005 233.5918,122.89649 87.51109,1.1642 175.48607,-39.8734 229.5719,-109.36997 53.10219,-66.41401 74.93407,-156.58722 56.62927,-239.66519 C 621.0721,216.00043 570.18588,144.1099 499.74721,104.33025 455.10175,78.40208 403.61628,64.2687 352.08594,64.90077 Z"
+                  style="opacity:1;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1" />
+            <path
+                  id="dot"
+                  d="M 352.08594,64.90077 C 237.07442,64.60438 124.67695,140.96918 84.619141,249.43398 49.991333,337.93474 61.825762,443.63899 117.68359,520.81874 c 52.43918,74.86051 142.01246,123.00005 233.5918,122.89649 87.51109,1.1642 175.48607,-39.8734 229.5719,-109.36997 53.10219,-66.41401 74.93407,-156.58722 56.62927,-239.66519 C 621.0721,216.00043 570.18588,144.1099 499.74721,104.33025 455.10175,78.40208 403.61628,64.2687 352.08594,64.90077 Z"
+                  style="" />
+            <path
+                  id="hold"
+                  d="M 352.08594,64.90077 C 237.07442,64.60438 124.67695,140.96918 84.619141,249.43398 49.991333,337.93474 61.825762,443.63899 117.68359,520.81874 c 52.43918,74.86051 142.01246,123.00005 233.5918,122.89649 87.51109,1.1642 175.48607,-39.8734 229.5719,-109.36997 53.10219,-66.41401 74.93407,-156.58722 56.62927,-239.66519 C 621.0721,216.00043 570.18588,144.1099 499.74721,104.33025 455.10175,78.40208 403.61628,64.2687 352.08594,64.90077 Z"
+                  style="opacity:1;fill:none;fill-opacity:0;stroke:#ffffff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:0;stroke-dasharray:;stroke-dashoffset:0;marker-start:url(#marker6602)" />
+            <text
+                  id="text4170"
+                  y="231.9801"
+                  x="246.19595"
+                  style="font-style:normal;font-weight:100;font-size:40px;line-height:125%;font-family:Roboto;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+                  xml:space="preserve"><tspan
+                                              y="231.9801"
+                                              x="246.19595"
+                                              id="date">I am the date</tspan></text>
+
+      </svg>
+</div>
+<!--<script type="text/cycript">
+	var getTemp = function() { return [IS2Weather currentTemperature]; };
+	var sunset = function() {return [IS2Weather sunsetTime];};
+	var sunrise = function() {return [IS2Weather sunriseTime];};
+</script>-->
+<script>
+      var days = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
+      //setClock();
+      initialize();
+      function initialize()
+      {
+            setDate();
+            var d = new Date();
+            var h = d.getHours();
+            var m = d.getMinutes();
+            if(h>12){h=h-12;}
+            if(h==0){h=12;setDate();}
+            if(m<10){m="0"+m;}
+            if(h<10){h='0'+h;}
+            var time = document.getElementById('time').innerHTML = (h+":"+m);
+      }
+      var refreshTime = setInterval(setClock, 1000);
+      function setClock()
+      {
+            var d = new Date();
+            var h = d.getHours();
+            var m = d.getMinutes();
+            var s = d.getSeconds();
+            if(h>12){h=h-12;}
+            if(h==0){h=12;setDate();}
+            if(m<10){m="0"+m;}
+            if(h<10){h='0'+h;}
+            sec = s;
+            rotS();
+            var time = document.getElementById('time').innerHTML = (h+":"+m);
+            //weather();
+           // cycle();
+      }
+      function cycle()
+      {
+            var d = new Date();
+            //var tempSet = sunset().substr(0,2);
+            var tempRise = sunrise().substr(0,2);
+            if(tempSet<=12){tempSet = tempSet+12;}
+            if(d.getHours() > tempSet|| d.getHours()<tempRise)
+            {
+                  var time =document.getElementById("sun").style.display="none";
+                  var time =document.getElementById("moon").style.display="block";
+            }else if(d.getHours() >= tempRise)
+            {
+                  var time =document.getElementById("moon").style.display="none";
+                  var time =document.getElementById("sun").style.display="hidden";
+            }else{alert("time="+d.getHours()+"sunset=");}
+      }
+      function setDate()
+      {
+            var d = new Date();
+            var today = d.getDate();
+            var day = d.getDay();
+            var mon = d.getMonth();
+            if(day>10){day = "0"+day;}
+            var time = document.getElementById('date').textContent = ((mon+1)+"/"+today+" " +days[day]);
+      }
+      var sec = 0;
+      var shift = (1814 /60);
+      function rotS()
+      {
+            rotToSec();
+            rotateDot();
+            sec%5 == 0?tickAnimate(sec):sec%5 == 2?tickRelieve(sec):null;
+      }
+      function tickAnimate(curSec)
+      {
+            curSec>=60?curSec-=60:null;
+            var d = document.getElementById("tick"+curSec);
+            d.setAttribute("class","tickrotate");
+      }
+      function tickRelieve(curSec)
+      {
+            curSec>=60?curSec-=60:null;
+            var d = document.getElementById("tick"+(curSec-2));
+            d.setAttribute("class","");
+      }
+      function rotToSec()
+      {
+            var d = document.getElementById("fillOverlay");
+            var value = (-1814 + shift*sec);
+            if(sec == 0){
+                  value = 1814;d.setAttribute("style","stroke-dashoffset:"+ value+"!important;");
+            }else if(sec == 1){
+                  d.setAttribute("class","noAnimation");
+                  d.setAttribute("style","stroke-dashoffset:-1814!important;");
+            }else{d.setAttribute("class","");d.setAttribute("style","stroke-dashoffset:"+ value+"!important;");}
+      }
+      function rotateDot()
+      {
+            var d = document.getElementById("dot");
+            var value = (6*(sec));
+            if(sec == 0){
+                  //d.setAttribute("class","noAnimation");
+                  d.setAttribute("style","transform: rotate(360deg);");
+            }else if(sec ==1)
+            {
+                  d.setAttribute("class","noAnimation");
+                  d.setAttribute("style","transform: rotate(0deg);");
+            }else
+            {d.setAttribute("class","");d.setAttribute("style","transform: rotate("+value+"deg);");}
+      }
+      /*weather();
+	function setWeather(weather)
+	{
+	    var temperature = weather.current.temp;
+            var text = document.getElementById("temp");
+            text.innerHTML = (temperature);
+            text = document.getElementById("degrees");
+            text.innerHTML='\xB0'+weather.units.temperature;
+	}
+      function weather()
+      {
+	      getWeather(setWeather);
+
+      }*/
+</script>

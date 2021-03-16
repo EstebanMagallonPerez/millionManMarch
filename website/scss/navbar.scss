@@ -1,0 +1,104 @@
+nav{
+    z-index: $nav-index;
+	width: 100%;
+	height: $nav-height;
+	position: fixed;
+	top: 0px;
+	@include color-options();
+	.nav-menu
+	{
+		ul{
+
+			padding: 0px;
+			margin: 0px;
+			list-style: none;
+			display: flex;
+			align-items: center;
+			li{
+				height: $nav-height;
+				overflow: hidden;
+				display: flex;
+				align-items: center;
+				a.nav-item{
+					position: relative;
+					display: inline-block;
+					line-height: $nav-height;
+					padding: 0px 16px;
+					height: 100%;
+					width: 100%;
+					margin: 0px;
+					text-decoration: none;
+					font-weight: 500;
+					color: white;
+				}
+				a.nav-item:hover:after{
+					content: "";
+					background: rgba(0, 0, 0, 0.125);
+					height: 100%;
+					width: 100%;
+					position: absolute;
+					left: 0px;
+					pointer-events: none;
+				}
+			}
+		}
+	}
+}
+@include respond-to(xs){
+	nav{
+		.nav-menu{
+			width: 100vw;
+			height:100vh;
+			position: fixed;
+			left: -600px;
+			background: $background-color;
+			box-shadow: $box-shadow;
+			transition: left .4s;
+			&.active
+			{
+				left: 0px;
+			}
+			ul
+			{
+				height: unset;
+				flex-wrap: wrap;
+				li {
+					overflow: hidden;
+					flex-basis: 100%;
+					a.nav-item{
+						display: inline-block;
+						height: 100%;
+						width: 100%;
+						border: none;
+						color: black;
+					}
+				}
+			}
+		}
+	}
+
+	.nav-toggle
+	{
+		display: inline-block;
+		position: absolute;
+		right: 0px;
+		height: $nav-height;
+		line-height: $nav-height;
+		padding: 0px 32px;
+		cursor: pointer;
+		background-image: url(/menu-icon.svg);
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-size: 25px 20px;
+		background-position: center;
+	}
+	.nav-toggle:hover:after{
+		content: "";
+		background: rgba(0, 0, 0, 0.125);
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		left: 0px;
+		pointer-events: none;
+	}
+}

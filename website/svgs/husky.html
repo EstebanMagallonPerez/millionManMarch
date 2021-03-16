@@ -1,0 +1,184 @@
+<style>
+	#head
+	{
+		animation: tiltHead ease 20s;
+		animation-iteration-count: infinite;
+		transform-origin: 50% 50%;
+	}
+	@keyframes tiltHead{
+		0% {
+			transform: rotate(0deg);
+		}
+		5%{
+			transform: rotate(20deg);
+		}
+		25% {
+			transform: rotate(20deg);
+		}
+		30% {
+			transform: rotate(0deg);
+		}
+	}
+	.outerEye
+	{
+		animation: outerEye linear 5s;
+		animation-iteration-count: infinite;
+		transform-origin: 50% 50%;
+	}
+	.innerEye
+	{
+		animation: innerEye linear 5s;
+		animation-iteration-count: infinite;
+		transform-origin: 50% 50%;
+	}
+	#eyebrowRight
+	{
+		animation: rightEyebrow ease 5s;
+		animation-iteration-count: infinite;
+		transform-origin: 50% 50%;
+	}
+	@keyframes rightEyebrow{
+		0% {
+			transform: rotate(0deg);
+		}
+		3%{
+			transform: rotate(-15deg);
+		}
+		6% {
+			transform: rotate(0deg);
+		}
+	}
+	#eyebrowLeft
+	{
+		animation: leftEyebrow ease 5s;
+		animation-iteration-count: infinite;
+		transform-origin: 50% 50%;
+	}
+	@keyframes leftEyebrow{
+		0% {
+			transform: rotate(0deg);
+		}
+		3%{
+			transform: rotate(15deg);
+		}
+		6% {
+			transform: rotate(0deg);
+		}
+	}
+
+	@keyframes outerEye{
+		0% {
+			ry:3.6;
+		}
+		3%{
+			ry:.5;
+		}
+		6% {
+			ry:3.6;
+		}
+	}
+	@keyframes innerEye{
+		0% {
+			ry:2.377;
+		}
+		3%{
+			ry:.2;
+		}
+		6% {
+			ry:2.377;
+		}
+	}
+
+
+</style>
+
+<div>
+	<svg id="head" viewBox="0 0 64 64" width="100%" height="100%"
+		 preserveAspectRatio="xMidYMin meet">
+		<defs
+			  id="defs7581" />
+		<path
+			  id="path4706"
+			  d="M 10.339864,41.022967 9.9653131,28.18931 C 9.6871475,18.657661 7.6846734,6.9612211 11.665745,4.9165153 c 4.935602,-3.0360264 8.338631,5.7709707 12.027101,6.9110387 2.215616,0.405128 4.730059,-0.406495 7.10139,-0.486422 2.400521,-0.08091 5.413931,0.401442 7.205619,0.0072 4.21706,-1.675289 7.873553,-8.8002385 11.974707,-7.0037239 5.135502,1.8336085 3.037435,24.8876669 2.998582,35.2665329 0.139182,8.437794 -8.875823,22.222246 -20.775329,22.41853 -12.893286,0.06668 -21.7206,-12.680052 -21.857951,-21.006731 z"
+			  style="fill:#413133;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.26896882px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+		<path
+			  id="rect4740"
+			  d="m 30.975782,15.034985 c -0.828493,0.01367 -1.83166,0.756299 -1.82898,1.725356 l 0.04923,17.749832 c 0.127357,7.720887 -12.023823,8.119269 -14.317383,0.0916 -7.5047927,9.785771 4.299696,25.963295 16.952339,26.188894 13.43664,-0.221639 24.834767,-18.96708 16.648944,-26.887239 -2.21715,8.85626 -14.797686,8.346168 -14.927219,0.493446 L 32.937492,16.5203 c -0.01418,-0.859429 -1.133217,-1.498981 -1.96171,-1.485315 z"
+			  style="opacity:0.98999999;fill:#fff8ee;fill-opacity:1;stroke:#000000;stroke-width:0.26896882;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+		<path
+			  id="path4708"
+			  d="m 10.874356,20.646242 c 0,0 3.416922,-3.377526 5.455186,-4.981714 1.624449,-1.2785 5.380042,-3.315614 5.380042,-3.315614 C 19.83039,10.752786 15.386827,3.4338114 12.044216,6.3894464 8.6812805,9.187525 10.639018,17.353554 10.874356,20.646242 Z"
+			  style="fill:#fff8ee;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.26896882px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+		<path
+			  id="path4710"
+			  d="m 40.301692,12.023334 c 0,0 4.410668,2.274226 6.329445,3.820706 1.672034,1.347608 5.322157,4.570254 5.322157,4.570254 0,0 0.0591,-8.026658 -1.094316,-11.8410085 C 50.535265,7.5027427 50.072205,6.1949182 49.046128,5.749953 48.287995,5.4211873 47.346963,5.828169 46.607893,6.197778 44.04837,7.4777696 40.301692,12.023334 40.301692,12.023334 Z"
+			  style="fill:#fff8ee;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.26896882px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+		<g
+		   id="g8819">
+			<rect
+				  style="opacity:0.98999999;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+				  id="rect4755"
+				  width="10.324581"
+				  height="5.1622906"
+				  x="26.160788"
+				  y="43.710354"
+				  ry="2.5811453" />
+			<path
+				  style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.94139081;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+				  d="m 24.585521,48.604123 c 0,0 0.672582,3.375522 3.440089,3.328438 2.801447,-0.04756 3.278342,-3.38831 3.278342,-3.38831"
+				  id="path4786" />
+			<path
+				  id="path4788"
+				  d="m 31.342566,48.458697 c 0,0 0.672582,3.375522 3.440088,3.328438 2.801448,-0.04756 3.278343,-3.38831 3.278343,-3.38831"
+				  style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.94139081;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+		</g>
+		<ellipse
+				 style="opacity:0.98999999;fill:#41c7ec;fill-opacity:1;stroke:#000000;stroke-width:0.26896879;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+				 id="circle4736"
+				 cx="41.35276"
+				 cy="33.54163"
+				 rx="3.6000185"
+				 ry="3.6000185"
+				 class='outerEye'/>
+		<ellipse
+				 rx="2.3773706"
+				 ry="2.3773706"
+				 cy="33.54163"
+				 cx="41.35276"
+				 id="circle4738"
+				 class='innerEye'
+				 style="opacity:0.98999999;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.26896879;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+		<rect
+			  style="opacity:0.98999999;fill:#fff8ee;fill-opacity:1;stroke:#000000;stroke-width:0.26896882;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+			  id="eyebrowRight"
+			  width="7.7434368"
+			  height="3.8037937"
+			  x="37.481041"
+			  y="25.313284"
+			  ry="1.9018968" />
+		<rect
+			  ry="1.9018968"
+			  y="25.313284"
+			  x="17.421669"
+			  height="3.8037937"
+			  width="7.7434363"
+			  id="eyebrowLeft"
+			  style="opacity:0.98999999;fill:#fff8ee;fill-opacity:1;stroke:#000000;stroke-width:0.26896882;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+		<ellipse
+				 rx="3.6000185"
+				 ry="3.6000185"
+				 cy="33.541634"
+				 cx="21.293386"
+				 id="path4716"
+				 class="outerEye"
+				 style="opacity:0.98999999;fill:#41c7ec;fill-opacity:1;stroke:#000000;stroke-width:0.26896879;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+		<ellipse
+				 style="opacity:0.98999999;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.26896879;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+				 id="circle4718"
+				 class="innerEye"
+				 cx="21.293386"
+				 cy="33.541634"
+				 rx="2.3773706"
+				 ry="2.3773706"/>
+	</svg>
+</div>

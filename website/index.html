@@ -1,0 +1,235 @@
+<style>
+    html
+    {
+        font-family: 'Roboto', sans-serif;
+    }
+    .svg{
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: opacity .8s;
+    }
+    .svg.loaded{
+        opacity: 1;
+    }
+    .small
+    {
+        height: 290px;
+    }
+    .large{
+        height: 320px;
+    }
+    iframe{
+        border:none;
+        width: 100%;
+    }
+    .card>.footer{overflow: auto;}
+    .card>.footer>.button{float: right;}
+    .banner{
+        background-image: url(./cityviewbg.png);
+        background-position: center bottom;
+        background-repeat: no-repeat;
+
+    }
+    .banner-text h1{
+        padding-right: 100px;
+    }
+    .scrollTarget>h1{
+        padding-top: 55px
+    }
+</style>
+<div class="banner tertiary">
+    <div class="container banner-text">
+        <h1>Esteban Perez</h1>
+        <h3 style="text-align: right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"I am me" -me</h3>
+    </div>
+</div>
+<div class="content">
+    <div class="container" >
+        <div style="margin: 0px 20px">
+            <h1>What am I looking at?</h1>
+            <p>
+                Everything you see I made, pictures, css, layout, icons, libraries, everything. Even the things that you dont see I made, Including a really cool server that inteligently decides if it should serve you
+                a full page with header and footer, or just send content to reduce the amount of data sent to devices. Most people wont appreciate this, but hopefully someone on 3G somewhere is happy with the improved times.
+                 Did I mention that it has all the benifits of a 1 page app with none of the drawbacks? Javascript is not required for the webpage to get properly index because of some clever tricks I used. Go check my github
+                  to see all the neat tricks I used, but if you are really interested just give me a job and I will tell you all about it for the low low price of employment. 
+            </p>
+            <h3>You good dawg?!?!?</h3>
+            <h5>Why would you go through the trouble of making everything?</h5>
+            <p>Its really not that complicated and boils down to three reasons:</p>
+            <ul>
+                <li>Rewriting an existing library is a really good way to get insight into why something is done the way it is, and to understand it at a deeper level</li>
+                <li>Developers are bad, and are using dated libraries because they are convenient.</li>
+                <li>I think its fun</li>
+            </ul>
+            <a style="float: right" href="#machineLearning">What's wrong with you?</a>
+            <br>
+            <!--
+            <h1>Why are you here?</h1>
+            <p>You could be here for a number of reasons, maybe you just stumbled upon this page, maybe you know me,
+                 or maybe you want to give me a job (Please be this one). 
+                 It does not really matter how you got here because the only thing that matters is me. 
+                 So whoever you are prepare to learn a little bit about how I choose to waste my time, and why that makes me such an interesting person.
+                <br><br>
+                <a style="float: right" href="#machineLearning">What's wrong with you?</a>
+            </p>
+            -->
+        </div>
+    </div>
+    <div class="tertiary">
+        <div class="container">
+            <div style="margin: 20px">
+                <h1 id="machineLearning">Machine Learning</h1>
+                <p>I spent a whole semester taking this class, and I didnt learn a thing... so why is this a section? Well some time after the class I decided to build a distributed learning tool. You may find yourself asking "How does it work?"
+                    Honestly I have no idea, I wrote it in a daze one night, and have still been trying to figure out how I managed that, but from what I can gather it works something like this:
+                    <ul>
+                        <li>
+                            User submits a number to test
+                        </li>
+                        <li>
+                            User's number is sent to the server which will then send the User's number to all connected users along with a classified number from the mnist dataset
+                        </li>
+                        <li>
+                            Upon receiving the number the User will calculate the difference from the known number and the User number and send that back to the server
+                        </li>
+                        <li>
+                            The server will store the response data and find the minimum of all the calculated differences
+                        </li>
+                        <li>
+                            Thats it, thats how KNN works in a distributed example. This could be expanded to other learning approaches such as a neural net, but this is a pretty good proof of concept. Check out the code <a href="https://github.com/EstebanMagallonPerez/millionManMarch">here</a> 
+                        </li>
+                    </ul>
+                    I actually know exactly how this all works and if google added web workers to every users computer when they searched for something google could have a huge cloud of users helping to solve big problems.
+                </p>
+                <h1>Distributed KNN</h1>
+                <canvas id="unknown" width="28" height="28"></canvas>
+                <canvas id="classified" width="28" height="28"></canvas>
+                <div align="center">
+                    <canvas id="myCanvas" width="224" height="224" style="border:2px solid black;"></canvas>
+                    <canvas id="scaledCanvas" width="28" height="28" style="border:2px solid black;"></canvas>
+                    <br /><br />
+                    <button onclick="javascript:clearArea();return false;">Clear Area</button>
+                    <button onclick="javascript:submitArea();return false;">Submit Number</button>
+                </div>
+                <div>We think your number is: <span id="nearestNeighbors"></span></div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="container">
+            <div style="margin: 0px 20px" class="scrollTarget container" id="pictures" >
+                <h1>Pretty Pictures</h1>
+                <p>My third grade teacher once told me "Stick to stick figures" because my drawings were so bad, and you know what... she was right.
+                    Here are some bad SVGs I've made just to show that I am fairly competent at javascript animations, and to show that my custom css
+                     framework supports a fairly robust grid system go ahead and resize your screen.
+                </p>
+            </div>
+        </div>
+        <div class="grid vertical-center fill container">
+            <div class="item xs-12 md-6 lg-8 xl-6">
+                <div class="card secondary">
+                    <div class="body">
+                        <iframe title="drone" class="large" scrolling="no" src="/svgs/drone.html"></iframe>
+                    </div>
+                    <div class="footer">
+                        <div>
+                            No big deal, just a drone Icon that I made, but check out these cards, they are pretty bangin
+                        </div>
+                        <!--
+                        <a class="button primary" href="svgs/drone.html">View Fullscreen</a>
+                        -->
+                    </div>
+                </div>
+            </div>
+            <div class="item xs-12 md-6 lg-4 xl-3">
+                <div class="card tertiary">
+                    <div class="body">
+                        <iframe title="earth" class="small" scrolling="no" src="/svgs/earth.html"></iframe>
+                    </div>
+                    <div class="footer">
+                        <div>
+                            Check out this sick svg, see that mask im using? pretty cool if I do say so myself... and I do say so.
+                        </div>
+                        <!--
+                        <a class="button secondary" href="svgs/earth.html">View Fullscreen</a>
+                        -->
+                    </div>
+                </div>
+            </div>
+            <div class="item xs-12 md-6 lg-6 xl-3">
+                <div class="card primary">
+                    <div class="body">
+                        <iframe title="husky" class="small" scrolling="no" src="/svgs/husky.html"></iframe>
+                    </div>
+                    <div class="footer">
+                        <div>
+                            Look a dog!!! people like dogs right? Thanks for the job!
+                        </div>
+                        <!--
+                        <a class="button tertiary" href="svgs/husky.html">View Fullscreen</a>
+                        -->
+                    </div>
+                </div>
+            </div>
+            <div class="item xs-12 md-6 lg-6 xl-3">
+                <div class="card tertiary">
+                    <div class="body">
+                        <iframe title="clock" class="small" scrolling="no" src="/svgs/v2.html"></iframe>
+                    </div>
+                    <div class="footer">
+                        <div>
+                            Now we are at the boring stuff that I added just to show off the grid system. Just act cool they wont even notice this is here.
+                        </div>
+                        <!--
+                        <a class="button secondary" href="svgs/v2.html">View Fullscreen</a>
+                        -->
+                    </div>
+                </div>
+            </div>
+            <div class="item xs-12 md-6 lg-4 xl-3">
+                <div class="card primary">
+                    <div class="body">
+                        <iframe title="taco" class="small" scrolling="no" src="/svgs/piPico4.html"></iframe>
+                    </div>
+                    <div class="footer">
+                        <div>
+                            Here is an svg of a raspberry pi pico which I use in my tool to configure the pico as a mechanical keyboard.
+                        </div>
+                        <br>
+                        <a class="button tertiary" href="svgs/taco.html">Pi Pico Keyboard</a>
+                    </div>
+                </div>
+            </div>
+            <div class="item xs-12 md-6 lg-8 xl-6">
+                <div class="card secondary">
+                    <div class="body">
+                        <iframe title="Activity Clock" class="large" scrolling="no" src="/svgs/activity.html"></iframe>
+                    </div>
+                    <div class="footer">
+                        <div>
+                            Oh shoot is that the apple activity circle? Naw, its just a lockHTML theme that I made for some dude on the internet at his request. Did I mention that I am an active member of an online communinty?
+                        </div>
+                        <!--
+                        <a class="button primary" href="svgs/activity.html">View Fullscreen</a>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                // Registration was successful
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function(err) {
+                // registration failed :(
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+    }
+</script>

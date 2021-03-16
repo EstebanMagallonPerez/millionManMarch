@@ -1,0 +1,7 @@
+//I only include a sticky footer because sticky footers are the one true footer
+footer {
+	flex-shrink: 0;
+	@include color-options();
+	padding: 32px 0px;
+	display: grid;
+}

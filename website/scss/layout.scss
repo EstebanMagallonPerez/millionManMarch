@@ -1,0 +1,79 @@
+html{
+	font-family: Arial, Helvetica, sans-serif;
+}
+body
+{
+	margin: 0px;
+	background-color: $background-color;
+	display: flex;
+	flex-direction: column;
+}
+.content
+{
+	margin-top: $nav-height;
+	flex: 1 0 auto;
+}
+.grid {
+	/*padding: 4px 8px;*/
+	display: grid;
+	grid-template-columns: repeat(12, 8.333333333333334%);
+	&.center
+	{
+		justify-items: center;
+	}
+	&.right
+	{
+		justify-items: right;
+	}
+	&.vertical-center
+	{
+		align-items:center;
+	}
+	&.bottom
+	{
+		align-items: end;
+	}
+	&.fill{
+		align-items: stretch;
+	}
+}
+.item {
+	grid-column-end: span 12;
+}
+.container{
+	margin: auto;
+	padding: 1em 0em;
+}
+@include respond-to(sm){
+	.container{
+		max-width: $sm-container
+	}
+}
+@include respond-to(md){
+	.container{
+		max-width: $md-container
+	}
+}
+@include respond-to(lg){
+	.container{
+		max-width: $lg-container
+	}
+}
+@include respond-to(xl){
+	.container{
+		max-width: $xl-container
+	}
+}
+//TODO add -up and -down so that a style can apply to a range
+@each $screen-size in $screen-size-list {
+	@include respond-to($screen-size){
+		@each $grid-count in $grid-list {
+			$i: index($grid-list, $grid-count);
+			.#{$screen-size}-#{$i} {
+				grid-column-end: span $grid-count;
+		}
+	}
+}
+}
+
+

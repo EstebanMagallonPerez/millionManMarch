@@ -1,4 +1,5 @@
 var fs = require('fs');
+const apache = require('./webModules/shittyApache');
 var express 			= require('express');
 var http 				= require('http');
 var app 				= express();
@@ -6,11 +7,17 @@ var server 				= http.createServer(app);
 var io 					= require('socket.io').listen(server);
 
 
-app.use(express.static(__dirname + '/public'));
+//app.use(express.static(__dirname + '/website'));
 
-app.get('/', function(req, res){
-	res.sendfile('./public/index.html');
+app.get('/*', function(req, res){
+	console.log("getting",req.url)
+	if (req.url == "/")
+	{
+		req.url = "/index.html";
+	}
+	var result = apache.fetchFile(req, res);
 });
+
 var dataFileBuffer  = fs.readFileSync(__dirname + '/mnist/images.idx3-ubyte');
 var labelFileBuffer = fs.readFileSync(__dirname + '/mnist/labels.idx1-ubyte');
 var classifiedImage = 10;	//10 - 10,000

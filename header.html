@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/scss/all.css">
+        <meta name="Description" content="One day I will be running for president. I am also a Perez... So this is Perezident.com">
+        <meta name="theme-color" content="#e24e42">
+        <link rel="manifest" href="/manifest.json">
+        <script src="js/jquery.js" type="text/javascript"></script>
+        <script src="js/socket.js"></script>
+        <style>
+            .svg{
+                height: 100%;
+                width: 100%;
+                opacity: 0;
+                transition: opacity .8s;
+            }
+            .svg.loaded{
+                opacity: 1;
+            }
+            .small
+            {
+                height: 250px;
+            }
+            .large{
+                height: 320px;
+            }
+            iframe{
+                border:none;
+                width: 100%;
+            }
+            .card>.footer{overflow: auto;}
+            .card>.footer>.button{float: right;}
+        </style>
+
+        <title>Perezident</title>
+    </head>
+    <body>
+        <nav class="primary">
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="/index.html" class="nav-item">Home</a></li>
+                    <li><a href="https://github.com/EstebanMagallonPerez?tab=repositories" class="nav-item">Projects</a></li>
+                    <li><a href="#about" class="nav-item">About</a></li>
+                    <li><a href="#donate" class="nav-item">Donate</a></li>
+                    <li><a href="#hello" href="#" class="button tertiary">hello</a></li>
+                </ul>
+            </div>
+            <div class="nav-toggle"></div>
+        </nav>
+        <div class="content">
