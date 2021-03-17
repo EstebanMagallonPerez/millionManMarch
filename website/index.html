@@ -2,6 +2,7 @@
     html
     {
         font-family: 'Roboto', sans-serif;
+        font-display: swap;
     }
     .svg{
         height: 100%;
@@ -41,7 +42,7 @@
 <div class="banner tertiary">
     <div class="container banner-text">
         <h1>Esteban Perez</h1>
-        <h3 style="text-align: right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"I am me" -me</h3>
+        <h2 style="text-align: right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"I am me" -me</h2>
     </div>
 </div>
 <div class="content">
@@ -54,15 +55,15 @@
                  Did I mention that it has all the benifits of a 1 page app with none of the drawbacks? Javascript is not required for the webpage to get properly index because of some clever tricks I used. Go check my github
                   to see all the neat tricks I used, but if you are really interested just give me a job and I will tell you all about it for the low low price of employment. 
             </p>
-            <h3>You good dawg?!?!?</h3>
-            <h5>Why would you go through the trouble of making everything?</h5>
+            <h2>You good dawg?!?!?</h2>
+            <h3>Why would you go through the trouble of making everything?</h3>
             <p>Its really not that complicated and boils down to three reasons:</p>
             <ul>
                 <li>Rewriting an existing library is a really good way to get insight into why something is done the way it is, and to understand it at a deeper level</li>
                 <li>Developers are bad, and are using dated libraries because they are convenient.</li>
                 <li>I think its fun</li>
             </ul>
-            <a style="float: right" href="#machineLearning">What's wrong with you?</a>
+            <a style="float: right;color:black" href="#machineLearning">What's wrong with you?</a>
             <br>
             <!--
             <h1>Why are you here?</h1>
@@ -96,7 +97,7 @@
                             The server will store the response data and find the minimum of all the calculated differences
                         </li>
                         <li>
-                            Thats it, thats how KNN works in a distributed example. This could be expanded to other learning approaches such as a neural net, but this is a pretty good proof of concept. Check out the code <a href="https://github.com/EstebanMagallonPerez/millionManMarch">here</a> 
+                            Thats it, thats how KNN works in a distributed example. This could be expanded to other learning approaches such as a neural net, but this is a pretty good proof of concept. Check out the code <a href="https://github.com/EstebanMagallonPerez/millionManMarch">on my Github</a> 
                         </li>
                     </ul>
                     I actually know exactly how this all works and if google added web workers to every users computer when they searched for something google could have a huge cloud of users helping to solve big problems.
@@ -196,10 +197,11 @@
                             Here is an svg of a raspberry pi pico which I use in my tool to configure the pico as a mechanical keyboard.
                         </div>
                         <br>
-                        <a class="button tertiary" href="svgs/taco.html">Pi Pico Keyboard</a>
+                        <a style="color:black"class="button tertiary" href="svgs/taco.html">Pi Pico Keyboard</a>
                     </div>
                 </div>
             </div>
+            <!--
             <div class="item xs-12 md-6 lg-8 xl-6">
                 <div class="card secondary">
                     <div class="body">
@@ -209,27 +211,15 @@
                         <div>
                             Oh shoot is that the apple activity circle? Naw, its just a lockHTML theme that I made for some dude on the internet at his request. Did I mention that I am an active member of an online communinty?
                         </div>
-                        <!--
                         <a class="button primary" href="svgs/activity.html">View Fullscreen</a>
-                        -->
+
                     </div>
                 </div>
             </div>
+            -->
         </div>
     </div>
     
     
 </div>
-<script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/sw.js').then(function(registration) {
-                // Registration was successful
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            }, function(err) {
-                // registration failed :(
-                console.log('ServiceWorker registration failed: ', err);
-            });
-        });
-    }
-</script>
+

@@ -52,7 +52,8 @@ exports.fetchFile = function (request, response) {
 			stat = fs.statSync(websiteBase+"/error.html");
 			response.writeHead(404, {
 				'Content-Type': mime.lookup(websiteBase+"/error.html"),
-				'Content-Length': stat.size
+				'Content-Length': stat.size,
+				'Cache-Control': 'max-age=31536000'
 			});
 			var readStream = fs.createReadStream(websiteBase+"/error.html");
 			readStream.pipe(response);

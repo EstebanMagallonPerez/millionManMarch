@@ -9,9 +9,24 @@
                 </div>
             </div>
             <div class="container">
-                <a>© 2018 Copyright: Perezident.com </a>
+                <p style="color:black">© 2018 Copyright: Perezident.com </p>
             </div>
         </footer>
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                        // Registration was successful
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    }, function(err) {
+                        // registration failed :(
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+                });
+            }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+        <script src="js/socket.js"></script>
         <script src="js/all.js"></script>
         <script>
             var socket = io.connect();
@@ -37,7 +52,11 @@
             socket.on('number',function(data){
                 var imagedata = context.createImageData(28, 28);
                 var imagedata2 = context.createImageData(28, 28);
-    
+                if(data == undefined || data[0] == undefined)
+                {
+                    console.log("something is borked")
+                    return
+                }
                 for(var i =0; i < data[0][0][1].length; i++)
                 {
                     pixelindex = i*4;
