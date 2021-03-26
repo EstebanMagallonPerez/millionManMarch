@@ -65,6 +65,10 @@ exports.fetchFile = function (request, response) {
 			if(!ignore &&request.headers["referer"] == undefined && type == 'text/html' || !ignore && request.headers.ajax == undefined && type == 'text/html')
 			{
 				var files = ['header.html', request.url,'footer.html'];
+				if (request.url.indexOf("google") > -1)
+				{
+					files = [request.url]
+				}
 				var stream = ss();
 
 				var fileSize = 0;
